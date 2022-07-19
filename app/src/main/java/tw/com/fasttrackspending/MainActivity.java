@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Boolean bool=false;
     private EditText edit;
-    private String sum="0";
+    //private String sum="0";
+    private SharedPreferences spBreakfast,spLunch,spdinner,spdrinks;
+    private int sum=0;//用來記錄總金額
     ////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +45,21 @@ public class MainActivity extends AppCompatActivity {
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
         String ss =sdf.format(new Date());
         Amount_binding_event();
+        spBreakfast = getSharedPreferences("breakfast",MODE_PRIVATE);
+        spLunch = getSharedPreferences("Lunch",MODE_PRIVATE);
+        spdinner = getSharedPreferences("dinner",MODE_PRIVATE);
+        spdrinks = getSharedPreferences("drinks",MODE_PRIVATE);
+        //edit.setText(spBreakfast.getString("amount","查無資料"));
 
         //歷史
         binding.historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog_history();
+                //dialog_history();
+                Log.d("abc","早餐:"+spBreakfast.getString("amount","查無資料"));
+                Log.d("abc","午餐:"+spLunch.getString("amount","查無資料"));
+                Log.d("abc","晚餐:"+spdinner.getString("amount","查無資料"));
+                Log.d("abc","飲料:"+spdrinks.getString("amount","查無資料"));
             }
         });
 
@@ -57,39 +69,39 @@ public class MainActivity extends AppCompatActivity {
     //綁定共用事件
     private void Amount_binding_event(){
 
-        binding.breakfast30.setOnClickListener(clickListener);
-        binding.breakfast40.setOnClickListener(clickListener);
-        binding.breakfast50.setOnClickListener(clickListener);
-        binding.breakfast60.setOnClickListener(clickListener);
-        binding.breakfast70.setOnClickListener(clickListener);
-        binding.breakfast80.setOnClickListener(clickListener);
+        binding.breakfast30.setOnClickListener(clickListenerbreakfast);
+        binding.breakfast40.setOnClickListener(clickListenerbreakfast);
+        binding.breakfast50.setOnClickListener(clickListenerbreakfast);
+        binding.breakfast60.setOnClickListener(clickListenerbreakfast);
+        binding.breakfast70.setOnClickListener(clickListenerbreakfast);
+        binding.breakfast80.setOnClickListener(clickListenerbreakfast);
         binding.breakfasEdit.setOnClickListener(clickListener);
         binding.BreakfastCustomAmount.setOnClickListener(clickListener);
 
-        binding.Lunch30.setOnClickListener(clickListener);
-        binding.Lunch40.setOnClickListener(clickListener);
-        binding.Lunch50.setOnClickListener(clickListener);
-        binding.Lunch60.setOnClickListener(clickListener);
-        binding.Lunch70.setOnClickListener(clickListener);
-        binding.Lunch80.setOnClickListener(clickListener);
+        binding.Lunch30.setOnClickListener(clickListenerLunch);
+        binding.Lunch40.setOnClickListener(clickListenerLunch);
+        binding.Lunch50.setOnClickListener(clickListenerLunch);
+        binding.Lunch60.setOnClickListener(clickListenerLunch);
+        binding.Lunch70.setOnClickListener(clickListenerLunch);
+        binding.Lunch80.setOnClickListener(clickListenerLunch);
         binding.LunchEdit.setOnClickListener(clickListener);
         binding.LunchCustomAmount.setOnClickListener(clickListener);
 
-        binding.dinner30.setOnClickListener(clickListener);
-        binding.dinner40.setOnClickListener(clickListener);
-        binding.dinner50.setOnClickListener(clickListener);
-        binding.dinner60.setOnClickListener(clickListener);
-        binding.dinner70.setOnClickListener(clickListener);
-        binding.dinner80.setOnClickListener(clickListener);
+        binding.dinner30.setOnClickListener(clickListenerdinner);
+        binding.dinner40.setOnClickListener(clickListenerdinner);
+        binding.dinner50.setOnClickListener(clickListenerdinner);
+        binding.dinner60.setOnClickListener(clickListenerdinner);
+        binding.dinner70.setOnClickListener(clickListenerdinner);
+        binding.dinner80.setOnClickListener(clickListenerdinner);
         binding.dinnerEdit.setOnClickListener(clickListener);
         binding.dinnerCustomAmount.setOnClickListener(clickListener);
 
-        binding.drinks20.setOnClickListener(clickListener);
-        binding.drinks25.setOnClickListener(clickListener);
-        binding.drinks30.setOnClickListener(clickListener);
-        binding.drinks40.setOnClickListener(clickListener);
-        binding.drinks50.setOnClickListener(clickListener);
-        binding.drinks60.setOnClickListener(clickListener);
+        binding.drinks20.setOnClickListener(clickListenerdrinks);
+        binding.drinks25.setOnClickListener(clickListenerdrinks);
+        binding.drinks30.setOnClickListener(clickListenerdrinks);
+        binding.drinks40.setOnClickListener(clickListenerdrinks);
+        binding.drinks50.setOnClickListener(clickListenerdrinks);
+        binding.drinks60.setOnClickListener(clickListenerdrinks);
         binding.drinksEdit.setOnClickListener(clickListener);
         binding.drinksCustomAmount.setOnClickListener(clickListener);
 
@@ -127,10 +139,114 @@ public class MainActivity extends AppCompatActivity {
         binding.drinks50.setBackgroundColor(color);
         binding.drinks60.setBackgroundColor(color);
     }
+    //早餐
+    View.OnClickListener clickListenerbreakfast=new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            edit=(EditText)view;
+            String str=edit.getText().toString();
+            if(str.equals("修改金額"))
+            {
+                EditcolorRED(Color.RED);
+                bool=true;
+            }
+            else if(bool)
+            {
+                dialog();
+                bool=false;
+            }else
+            {
+
+                spBreakfast.edit()
+                        .putString("amount",str)
+                        // .clear()
+                        .commit();
+
+                binding.totle.setText(str);
+            }
+
+        }
+    };
+    //午餐
+    View.OnClickListener clickListenerLunch=new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            edit=(EditText)view;
+            String str=edit.getText().toString();
+            if(str.equals("修改金額"))
+            {
+                EditcolorRED(Color.RED);
+                bool=true;
+            }
+            else if(bool)
+            {
+                dialog();
+                bool=false;
+            }else
+            {
+                spLunch.edit()
+                        .putString("amount",str)
+                        // .clear()
+                        .commit();
+                binding.totle.setText(str);
+            }
+        }
+    };
+    //晚餐
+    View.OnClickListener clickListenerdinner=new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            edit=(EditText)view;
+            String str=edit.getText().toString();
+            if(str.equals("修改金額"))
+            {
+                EditcolorRED(Color.RED);
+                bool=true;
+            }
+            else if(bool)
+            {
+                dialog();
+                bool=false;
+            }else
+            {
+                spdinner.edit()
+                        .putString("amount",str)
+                        // .clear()
+                        .commit();
+                binding.totle.setText(str);
+            }
+        }
+    };
+    //飲料
+    View.OnClickListener clickListenerdrinks=new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            edit=(EditText)view;
+            String str=edit.getText().toString();
+            if(str.equals("修改金額"))
+            {
+                EditcolorRED(Color.RED);
+                bool=true;
+            }
+            else if(bool)
+            {
+                dialog();
+                bool=false;
+            }else
+            {
+                spdrinks.edit()
+                        .putString("amount",str)
+                        // .clear()
+                        .commit();
+                binding.totle.setText(str);
+            }
+        }
+    };
+
     //金額共用事件
     View.OnClickListener clickListener=new View.OnClickListener() {
         @Override
-        public void onClick(View view) {
+        public void onClick(View view){
 
             edit=(EditText)view;
             String str=edit.getText().toString();
@@ -150,6 +266,10 @@ public class MainActivity extends AppCompatActivity {
             else
             {
                 binding.totle.setText(str);
+                //Log.d("abc",str.substring(0, str.indexOf("元")));
+                int totle=Integer.parseInt(str.substring(0, str.indexOf("元")));
+                sum+=totle;
+                Log.d("abc",String.valueOf(sum));
 //                System.exit(0);//正常退出App9
             }
         }
@@ -166,9 +286,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 //Toast.makeText(MainActivity.this, editText.getText().toString()+"元", Toast.LENGTH_SHORT).show();
 
-                    sum=editText.getText().toString();
-                    binding.totle.setText(sum);
-                    edit.setText(sum+"元");
+                    //Log.d("abc",editText.getText().subSequence(0,editText.getText().toString().indexOf("元")).toString());
+                    binding.totle.setText(editText.getText().toString());
+                    edit.setText(editText.getText().toString()+"元");
+                /*spBreakfast.edit()
+                        .putString("amount",editText.getText().toString()+"元")
+                        // .clear()
+                        .commit();
+                spLunch.edit()
+                        .putString("amount",editText.getText().toString()+"元")
+                        // .clear()
+                        .commit();
+                spdinner.edit()
+                        .putString("amount",editText.getText().toString()+"元")
+                        // .clear()
+                        .commit();
+                spdrinks.edit()
+                        .putString("amount",editText.getText().toString()+"元")
+                        // .clear()
+                        .commit();*/
                     EditcolorRED(Color.parseColor("#FF0080FF"));
 
                 //將get到的文字轉成字串才可以給Toast顯示哦
