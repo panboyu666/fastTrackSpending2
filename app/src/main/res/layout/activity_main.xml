@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="廣告位置" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:text="七月份累積"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/totle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:gravity="center"
+            android:text="0元"
+            android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="早餐"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/breakfast30"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="30元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/breakfast40"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="40元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/breakfast50"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="50元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/Breakfast_custom_amount"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout2"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="自訂金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/breakfast60"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="60元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/breakfast70"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="70元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/breakfast80"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="80元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/breakfasEdit"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="修改金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="午餐"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/Lunch30"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="30元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/Lunch40"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="40元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/Lunch50"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="50元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/Lunch_custom_amount"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout2"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="自訂金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/Lunch60"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="60元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/Lunch70"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="70元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/Lunch80"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="80元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/LunchEdit"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="修改金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="晚餐"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/dinner30"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="30元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/dinner40"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="40元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/dinner50"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="50元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/dinner_custom_amount"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout2"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="自訂金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/dinner60"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="60元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/dinner70"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="70元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/dinner80"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="80元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/dinnerEdit"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="修改金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="飲料、其他"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/drinks20"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="20元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/drinks25"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="25元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/drinks30"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="30元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/drinks_custom_amount"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout2"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="自訂金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/drinks40"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="40元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/drinks50"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="50元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/drinks60"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="60元"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/drinksEdit"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/mylayout"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:paddingBottom="8dp"
+                android:text="修改金額"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
+            android:text="快速記帳:點選金額後會自動關閉程式"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/history_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="5dp"
+            android:text="查看紀錄"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+
+</LinearLayout>
