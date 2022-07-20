@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Boolean bool=false;
     private EditText edit;
-    //private String sum="0";
     private SharedPreferences spBreakfast,spLunch,spdinner,spdrinks;
     private int sum=0;//用來記錄總金額
+    private String Month_Day;
     ////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,31 +40,106 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         //setContentView(R.layout.activity_main);
         setContentView(binding.getRoot());
-
-        SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日 kk:mm分");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
-        String ss =sdf.format(new Date());
-        Amount_binding_event();
-        spBreakfast = getSharedPreferences("breakfast",MODE_PRIVATE);
-        spLunch = getSharedPreferences("Lunch",MODE_PRIVATE);
-        spdinner = getSharedPreferences("dinner",MODE_PRIVATE);
-        spdrinks = getSharedPreferences("drinks",MODE_PRIVATE);
-        //edit.setText(spBreakfast.getString("amount","查無資料"));
+        Month_Day =sdf.format(new Date());
 
+        Log.d("abc",Month_Day);
+
+        Amount_binding_event();//元件綁定事件
+        spBreakfast = getSharedPreferences("breakfast",MODE_PRIVATE);//早餐
+        spLunch = getSharedPreferences("Lunch",MODE_PRIVATE);//午餐
+        spdinner = getSharedPreferences("dinner",MODE_PRIVATE);//晚餐
+        spdrinks = getSharedPreferences("drinks",MODE_PRIVATE);//飲料
+        get_Component_Amount();//取得元件金額
         //歷史
         binding.historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //dialog_history();
-                Log.d("abc","早餐:"+spBreakfast.getString("amount","查無資料"));
-                Log.d("abc","午餐:"+spLunch.getString("amount","查無資料"));
-                Log.d("abc","晚餐:"+spdinner.getString("amount","查無資料"));
-                Log.d("abc","飲料:"+spdrinks.getString("amount","查無資料"));
             }
         });
 
     }
+    //取得元件金額
+    private void get_Component_Amount(){
+        binding.breakfast30.setText(spBreakfast.getString("breakfast1","30元"));
+        binding.breakfast40.setText(spBreakfast.getString("breakfast2","40元"));
+        binding.breakfast50.setText(spBreakfast.getString("breakfast3","50元"));
+        binding.breakfast60.setText(spBreakfast.getString("breakfast4","60元"));
+        binding.breakfast70.setText(spBreakfast.getString("breakfast5","70元"));
+        binding.breakfast80.setText(spBreakfast.getString("breakfast6","80元"));
 
+        binding.Lunch30.setText(spLunch.getString("Lunch1","30元"));
+        binding.Lunch40.setText(spLunch.getString("Lunch2","40元"));
+        binding.Lunch50.setText(spLunch.getString("Lunch3","50元"));
+        binding.Lunch60.setText(spLunch.getString("Lunch4","60元"));
+        binding.Lunch70.setText(spLunch.getString("Lunch5","70元"));
+        binding.Lunch80.setText(spLunch.getString("Lunch6","80元"));
+
+        binding.dinner30.setText(spdinner.getString("dinner1","30元"));
+        binding.dinner30.setText(spdinner.getString("dinner2","40元"));
+        binding.dinner30.setText(spdinner.getString("dinner3","50元"));
+        binding.dinner30.setText(spdinner.getString("dinner4","60元"));
+        binding.dinner30.setText(spdinner.getString("dinner5","70元"));
+        binding.dinner30.setText(spdinner.getString("dinner6","80元"));
+
+        binding.drinks20.setText(spdrinks.getString("drinks1","20元"));
+        binding.drinks25.setText(spdrinks.getString("drinks2","25元"));
+        binding.drinks30.setText(spdrinks.getString("drinks3","30元"));
+        binding.drinks40.setText(spdrinks.getString("drinks4","40元"));
+        binding.drinks50.setText(spdrinks.getString("drinks5","50元"));
+        binding.drinks60.setText(spdrinks.getString("drinks6","60元"));
+
+        //計算累積金額
+        Calculate_the_accumulated_amount();
+
+
+    }
+    //計算累積金額
+    private void Calculate_the_accumulated_amount(){
+        int breakfast,Lunch,dinner,drinks;
+        breakfast=Integer.parseInt(spBreakfast.getString("amount","0").substring(0, spBreakfast.getString("amount","0").indexOf("元")));
+        Lunch=Integer.parseInt(spLunch.getString("amount","0").substring(0, spLunch.getString("amount","0").indexOf("元")));
+        dinner=Integer.parseInt(spdinner.getString("amount","0").substring(0, spdinner.getString("amount","0").indexOf("元")));
+        drinks=Integer.parseInt(spdrinks.getString("amount","0").substring(0, spdrinks.getString("amount","0").indexOf("元")));
+        binding.totle.setText(breakfast+Lunch+dinner+drinks+"元");
+    }
+    //儲存元件金額
+    private void Component_Amount_Storage_Breakfast(){
+        spBreakfast.edit()
+                .putString("breakfast1",binding.breakfast30.getText().toString())
+                .putString("breakfast2",binding.breakfast40.getText().toString())
+                .putString("breakfast3",binding.breakfast50.getText().toString())
+                .putString("breakfast4",binding.breakfast60.getText().toString())
+                .putString("breakfast5",binding.breakfast70.getText().toString())
+                .putString("breakfast6",binding.breakfast80.getText().toString())
+                .commit();
+        spLunch.edit()
+                .putString("Lunch1",binding.Lunch30.getText().toString())
+                .putString("Lunch2",binding.Lunch40.getText().toString())
+                .putString("Lunch3",binding.Lunch50.getText().toString())
+                .putString("Lunch4",binding.Lunch60.getText().toString())
+                .putString("Lunch5",binding.Lunch70.getText().toString())
+                .putString("Lunch6",binding.Lunch80.getText().toString())
+                .commit();
+        spdinner.edit()
+                .putString("dinner1",binding.dinner30.getText().toString())
+                .putString("dinner2",binding.dinner40.getText().toString())
+                .putString("dinner3",binding.dinner50.getText().toString())
+                .putString("dinner4",binding.dinner60.getText().toString())
+                .putString("dinner5",binding.dinner70.getText().toString())
+                .putString("dinner6",binding.dinner80.getText().toString())
+                .commit();
+        spdrinks.edit()
+                .putString("drinks1",binding.drinks20.getText().toString())
+                .putString("drinks2",binding.drinks25.getText().toString())
+                .putString("drinks3",binding.drinks30.getText().toString())
+                .putString("drinks4",binding.drinks40.getText().toString())
+                .putString("drinks5",binding.drinks50.getText().toString())
+                .putString("drinks6",binding.drinks60.getText().toString())
+                .commit();
+    }
 
     //綁定共用事件
     private void Amount_binding_event(){
@@ -104,8 +179,6 @@ public class MainActivity extends AppCompatActivity {
         binding.drinks60.setOnClickListener(clickListenerdrinks);
         binding.drinksEdit.setOnClickListener(clickListener);
         binding.drinksCustomAmount.setOnClickListener(clickListener);
-
-
     }
 
     //修改顏色
@@ -156,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
                 bool=false;
             }else
             {
+                //儲存元件金額8
 
                 spBreakfast.edit()
                         .putString("amount",str)
@@ -287,24 +361,10 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, editText.getText().toString()+"元", Toast.LENGTH_SHORT).show();
 
                     //Log.d("abc",editText.getText().subSequence(0,editText.getText().toString().indexOf("元")).toString());
-                    binding.totle.setText(editText.getText().toString());
-                    edit.setText(editText.getText().toString()+"元");
-                /*spBreakfast.edit()
-                        .putString("amount",editText.getText().toString()+"元")
-                        // .clear()
-                        .commit();
-                spLunch.edit()
-                        .putString("amount",editText.getText().toString()+"元")
-                        // .clear()
-                        .commit();
-                spdinner.edit()
-                        .putString("amount",editText.getText().toString()+"元")
-                        // .clear()
-                        .commit();
-                spdrinks.edit()
-                        .putString("amount",editText.getText().toString()+"元")
-                        // .clear()
-                        .commit();*/
+                binding.totle.setText(editText.getText().toString());
+                edit.setText(editText.getText().toString()+"元");
+                Component_Amount_Storage_Breakfast();
+
                     EditcolorRED(Color.parseColor("#FF0080FF"));
 
                 //將get到的文字轉成字串才可以給Toast顯示哦
